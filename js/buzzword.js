@@ -2,26 +2,51 @@ $(document).ready(function(){
 
   buzz = new BuzzwordCounter();
 
-  var $source = $('#source');
+  var $source = $('#submit-text');
+  var $show = $('#current-buzzwords');
+  var $found = $('#found-buzzwords');
+  $show.append((buzz.listCurrentBuzzwords()));
 
-  $source.keydown(function(){
+
+  $source.click(function(){
     var sourceText = $('#source-text').val();
-    buzz.getText(sourceText);
+    var checkText = buzz.splitText(sourceText);
+    var foundWords = buzz.checkBuzzwords(checkText);
   });
 
 });
 
 function BuzzwordCounter() {
   this.text = '';
-  this.buzzwords = ["align", "facilitate", "granular", "review", "cost", "schedule", "email", "strategy", "paradigm", "r.o.i.", "value", "customer", "space", "free", "proactive", "benchmark", "curate", "penetration", "driven", "sales", "off-line", "management", "risk", "restructuring", "timeline", "markets", "life cycle", "scalable"]
+  this.buzzwords = ["align", "facilitate", "granular", "review", "cost", "schedule", "email", "strategy", "paradigm", "r.o.i.", "value", "customer", "space", "free", "proactive", "benchmark", "curate", "penetration", "driven", "sales", "off-line", "management", "risk", "restructuring", "timeline", "markets", "life cycle", "scalable"];
+  this.buzzwordCounter = 0;
+  this.foundWords = []
 }
 
-BuzzwordCounter.prototype.getText = function(text) {
-  this.text = text;
+BuzzwordCounter.prototype.splitText = function(text) {
+  this.text = text.toLowerCase();
+  return this.text.split(" ");
 }
 
-BuzzwordCounter.prototype.splitText = function() {
-  console.log(this.text.split(""));
+BuzzwordCounter.prototype.listCurrentBuzzwords = function() {
+  var html = "<ul>"
+  for (var i = this.buzzwords.length - 1; i >= 0; i--) {
+    html+= "<li>" + " " + this.buzzwords[i] + " " + "</li>"
+  };
+  html += "</ul>"
+  return html;
+}
+
+BuzzwordCounter.prototype.checkBuzzwords = function(array) {
+  for (var i = array.length - 1; i >= 0; i--) {
+    for (var j = this.buzzwords.length - 1; j >= 0; j--) {
+      if (array[i] === this.buzzwords[j]) {
+        this.foundWords.push(this.buzzwords[j]);
+      }
+    }
+  };
+  console.log(this.foundWords);
+  return this.foundWords;
 }
 
 
