@@ -2,6 +2,11 @@
 /*  border: 1px solid blue;
 */}
 
+body {
+  font-family: Helvetica;
+}
+
+
 #source-text {
   width: 50%;
   height: 30%;
