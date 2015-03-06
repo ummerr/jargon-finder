@@ -27,7 +27,8 @@ function BuzzwordCounter() {
 
 BuzzwordCounter.prototype.splitText = function(text) {
   this.text = text.toLowerCase();
-  return this.text.split(" ");
+  return this.text.split(/\W+/);
+
 }
 
 BuzzwordCounter.prototype.checkBuzzwords = function(array) {
