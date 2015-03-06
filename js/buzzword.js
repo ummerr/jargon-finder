@@ -20,7 +20,7 @@ $(document).ready(function(){
 
 function BuzzwordCounter() {
   this.text = '';
-  this.buzzwords = ["align", "facilitate", "granular", "review", "cost", "schedule", "email", "strategy", "paradigm", "r.o.i.", "value", "customer", "space", "free", "proactive", "benchmark", "curate", "penetration", "driven", "sales", "off-line", "management", "risk", "restructuring", "timeline", "markets", "life cycle", "scalable"];
+  this.buzzwords = DICTIONARY;
   this.buzzwordCounter = 0;
   this.foundWords = []
 }
