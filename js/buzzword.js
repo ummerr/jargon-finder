@@ -5,13 +5,15 @@ $(document).ready(function(){
   var $source = $('#submit-text');
   var $show = $('#current-buzzwords');
   var $found = $('#found-buzzwords');
-  $show.append((buzz.listCurrentBuzzwords()));
+  $show.append(buzz.listCurrentBuzzwords());
 
 
   $source.click(function(){
     var sourceText = $('#source-text').val();
     var checkText = buzz.splitText(sourceText);
     var foundWords = buzz.checkBuzzwords(checkText);
+    $found.empty().append(buzz.renderFoundWords(foundWords));
+    buzz.foundWords = []
   });
 
 });
@@ -28,15 +30,6 @@ BuzzwordCounter.prototype.splitText = function(text) {
   return this.text.split(" ");
 }
 
-BuzzwordCounter.prototype.listCurrentBuzzwords = function() {
-  var html = "<ul>"
-  for (var i = this.buzzwords.length - 1; i >= 0; i--) {
-    html+= "<li>" + " " + this.buzzwords[i] + " " + "</li>"
-  };
-  html += "</ul>"
-  return html;
-}
-
 BuzzwordCounter.prototype.checkBuzzwords = function(array) {
   for (var i = array.length - 1; i >= 0; i--) {
     for (var j = this.buzzwords.length - 1; j >= 0; j--) {
@@ -47,6 +40,26 @@ BuzzwordCounter.prototype.checkBuzzwords = function(array) {
   };
   console.log(this.foundWords);
   return this.foundWords;
+}
+
+
+BuzzwordCounter.prototype.listCurrentBuzzwords = function() {
+  var html = "<ul>"
+  for (var i = this.buzzwords.length - 1; i >= 0; i--) {
+    html+= "<li>" + " " + this.buzzwords[i] + " " + "</li>"
+  };
+  html += "</ul>"
+  return html;
+}
+
+BuzzwordCounter.prototype.renderFoundWords = function(array) {
+  var html = "<h3>Found Buzzwords:</h3>"
+  html += "<ul>"
+  for (var i = array.length - 1; i >= 0; i--) {
+    html+= "<li>" + array[i] + "</li>"
+  }
+  html += "</ul>"
+  return html;
 }
 
 
