@@ -45,7 +45,7 @@ BuzzwordCounter.prototype.checkBuzzwords = function(array) {
 
 
 BuzzwordCounter.prototype.listCurrentBuzzwords = function() {
-  var html = "<ul>"
+  var html = "<ul class='list'>"
   for (var i = this.buzzwords.length - 1; i >= 0; i--) {
     html+= "<li>" + " " + this.buzzwords[i] + " " + "</li>"
   };
@@ -55,7 +55,7 @@ BuzzwordCounter.prototype.listCurrentBuzzwords = function() {
 
 BuzzwordCounter.prototype.renderFoundWords = function(array) {
   var html = "<h3>Found Buzzwords:</h3>"
-  html += "<ul>"
+  html += "<ul class='list'>"
   for (var i = array.length - 1; i >= 0; i--) {
     html+= "<li>" + array[i] + "</li>"
   }
