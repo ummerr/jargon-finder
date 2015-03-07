@@ -55,7 +55,7 @@ BuzzwordCounter.prototype.listCurrentBuzzwords = function() {
 
 BuzzwordCounter.prototype.renderFoundWords = function(array) {
   var html = "<h3>Found Buzzwords:</h3>"
-  html += "<ul class='list'>"
+  html += "<ul class='list found'>"
   for (var i = array.length - 1; i >= 0; i--) {
     html+= "<li>" + array[i] + "</li>"
   }
