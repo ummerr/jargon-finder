@@ -33,7 +33,8 @@ function BuzzwordCounter() {
   this.text = '';
   this.buzzwords = DICTIONARY;
   this.buzzwordCounter = 0;
-  this.foundWords = []
+  this.foundWords = [];
+  this.statsPercent = 0;
 }
 
 BuzzwordCounter.prototype.splitText = function(text) {
@@ -59,7 +60,6 @@ BuzzwordCounter.prototype.checkPhrases = function() {
       }
     }
 }
-
 
 BuzzwordCounter.prototype.listCurrentBuzzwords = function() {
   var html = "<ul class='list'>"
