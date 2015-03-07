@@ -80,3 +80,31 @@ BuzzwordCounter.prototype.renderFoundWords = function(array) {
   return html;
 }
 
+BuzzwordCounter.prototype.percentJargon = function() {
+  var totalWords = this.text.trim().replace( /\n/g, " " ).split( " " );
+  console.log(totalWords);
+  console.log(totalWords.length);
+  this.statsPercent = ((this.foundWords.length / totalWords.length) * 100)
+}
+
+BuzzwordCounter.prototype.renderStats = function() {
+  var html = "<h3> " + this.statsPercent.toFixed(1) + "% Jargon</h3>"
+  return html;
+}
+
+BuzzwordCounter.prototype.statsMessage = function() {
+  var message = " "
+  if (this.statsPercent > 8) {
+    message = "GRADE F: This is quite a jargon-y piece."
+  } else if (this.statsPercent > 6 ) {
+    message = "GRADE D: ou have quite a bit of jargon there."
+  } else if (this.statsPercent > 4 ) {
+    message = "GRADE C: There's definite jargon there."
+  } else if (this.statsPercent > 2) {
+    message = "GRADE B: Jargon for sure, but not too bad"
+  } else {
+    message = "GRADE A: You're good homey."
+  }
+  console.log(message);
+  return message;
+}
