@@ -12,6 +12,7 @@ $(document).ready(function(){
     var sourceText = $('#source-text').val();
     var checkText = buzz.splitText(sourceText);
     var foundWords = buzz.checkBuzzwords(checkText);
+    buzz.checkPhrases();
     $found.empty().append(buzz.renderFoundWords(foundWords));
     buzz.foundWords = []
   });
@@ -28,7 +29,6 @@ function BuzzwordCounter() {
 BuzzwordCounter.prototype.splitText = function(text) {
   this.text = text.toLowerCase();
   return this.text.split(/\W+/);
-
 }
 
 BuzzwordCounter.prototype.checkBuzzwords = function(array) {
@@ -41,6 +41,14 @@ BuzzwordCounter.prototype.checkBuzzwords = function(array) {
   };
   console.log(this.foundWords);
   return this.foundWords;
+}
+
+BuzzwordCounter.prototype.checkPhrases = function() {
+    for (var i = this.buzzwords.length - 1; i >= 0; i--) {
+      if (this.text.search(this.buzzwords[i]) !== -1 && this.foundWords.indexOf(this.buzzwords[i]) === -1) {
+        this.foundWords.push(this.buzzwords[i]);
+      }
+    }
 }
 
 
