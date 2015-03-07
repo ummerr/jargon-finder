@@ -1,10 +1,15 @@
-* {
-/*  border: 1px solid blue;
-*/}
+/** {
+  border: 1px solid red;
+}*/
 
 body {
-  font-family: Helvetica;
+  font-family: 'Noto Sans', sans-serif;
   width: 90%;
+}
+
+h1 {
+  font-size: 3em;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 #container {
@@ -12,8 +17,46 @@ body {
   margin: 0 auto;
 }
 
-
 #source-text {
-  width: 50%;
-  height: 30%;
+  width: 70%;
+  height: 40%;
+  font-size: 1em;
+  font-family: 'Roboto Condensed', sans-serif;
+  border: 1px dotted #191919;
+}
+
+.list {
+  -moz-column-count: 3;
+  -moz-column-gap: 5px;
+  -webkit-column-count: 3;
+  -webkit-column-gap: 5px;
+  column-count: 3;
+  column-gap: 5px;
+}
+
+#submit-text {
+  display: block;
+  background: #c6c2c8;
+  -webkit-border-radius: 10;
+  -moz-border-radius: 10;
+  border: 1px solid #191919;
+  border-radius: 10px;
+  font-family: Arial;
+  color: #191919;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  width: 20%;
+  margin-top: 20px;
+  text-align: center;
+}
+
+#submit-text:hover {
+  background: #c6c2c8;
+  background-image: -webkit-linear-gradient(top, #c6c2c8, #3498db);
+  background-image: -moz-linear-gradient(top, #c6c2c8, #3498db);
+  background-image: -ms-linear-gradient(top, #c6c2c8, #3498db);
+  background-image: -o-linear-gradient(top, #c6c2c8, #3498db);
+  background-image: linear-gradient(to bottom, #c6c2c8, #3498db);
+  text-decoration: none;
 }
