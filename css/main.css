@@ -63,3 +63,11 @@ h1 {
   background-image: linear-gradient(to bottom, #c6c2c8, #3498db);
   text-decoration: none;
 }
+
+#jargon-stats {
+  display: none;
+}
+
+#found-buzzwords {
+  display: none;
+}
