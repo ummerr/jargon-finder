@@ -5,10 +5,10 @@
 body {
   font-family: 'Noto Sans', sans-serif;
   width: 90%;
+  background-color: lavender;
 }
 
-h1 {
-  font-size: 3em;
+h1 h2 h3 h4 h5 {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
@@ -20,7 +20,7 @@ h1 {
 #source-text {
   width: 70%;
   height: 40%;
-  font-size: 1em;
+  font-size: 1.10em;
   font-family: 'Roboto Condensed', sans-serif;
   border: 1px dotted #191919;
 }
@@ -70,4 +70,8 @@ h1 {
 
 #found-buzzwords {
   display: none;
+}
+
+.grade {
+  color: red;
 }

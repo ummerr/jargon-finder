@@ -5,7 +5,8 @@ $(document).ready(function(){
   var $source = $('#submit-text');
   var $show = $('#current-buzzwords');
   var $found = $('#found-buzzwords');
-  var $stats = $('#jargon-stats')
+  var $stats = $('#jargon-stats');
+  var $message = $('#message');
   $show.append(buzz.listCurrentBuzzwords());
 
 
@@ -21,7 +22,7 @@ $(document).ready(function(){
 
     buzz.percentJargon();
     $stats.empty().append(buzz.renderStats())
-
+    $message.empty().append(buzz.statsMessage());
     $found.empty().append(buzz.renderFoundWords(foundWords));
 
     buzz.foundWords = []
@@ -30,6 +31,7 @@ $(document).ready(function(){
 });
 
 function BuzzwordCounter() {
+  this.originalText = ''
   this.text = '';
   this.buzzwords = DICTIONARY;
   this.buzzwordCounter = 0;
@@ -38,6 +40,7 @@ function BuzzwordCounter() {
 }
 
 BuzzwordCounter.prototype.splitText = function(text) {
+  this.originalText = text;
   this.text = text.toLowerCase();
   return this.text.split(/\W+/);
 }
@@ -77,6 +80,8 @@ BuzzwordCounter.prototype.renderFoundWords = function(array) {
     html+= "<li>" + array[i] + "</li>"
   }
   html += "</ul>"
+  html += "<h3>Your text:</h3>"
+  html += "<p><em>'" + this.originalText + "'</em></p>"
   return html;
 }
 
@@ -94,17 +99,20 @@ BuzzwordCounter.prototype.renderStats = function() {
 
 BuzzwordCounter.prototype.statsMessage = function() {
   var message = " "
+  var html = "<h2>"
+
   if (this.statsPercent > 8) {
-    message = "GRADE F: This is quite a jargon-y piece."
+    message = "<span class='grade'>GRADE F:</span> This is quite a jargon-y piece."
   } else if (this.statsPercent > 6 ) {
-    message = "GRADE D: ou have quite a bit of jargon there."
+    message = "<span class='grade'>GRADE D:</span> You have quite a bit of jargon there."
   } else if (this.statsPercent > 4 ) {
-    message = "GRADE C: There's definite jargon there."
+    message = "<span class='grade'>GRADE C:</span> There's definite jargon there."
   } else if (this.statsPercent > 2) {
-    message = "GRADE B: Jargon for sure, but not too bad"
+    message = "<span class='grade'>GRADE B:</span> Jargon for sure, but not too bad"
   } else {
-    message = "GRADE A: You're good homey."
+    message = "<span class='grade'>GRADE A:</span> You're good homey."
   }
-  console.log(message);
-  return message;
+
+  html += message + "</h2>";
+  return html
 }
